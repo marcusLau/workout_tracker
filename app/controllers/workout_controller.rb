@@ -63,5 +63,14 @@ class WorkoutController < ApplicationController
         end
     end
 
+    # Can only delete if it belongs to that user
+    delete '/workouts/:id/delete' do 
+        @workout = current_user.workouts.find_by(id: params[:id])
+        if @workout && @workout.destroy
+            redirect to '/workouts'
+        else
+            redirect to '/workouts/#{@workout.id}'
+        end
 
+    end
 end
