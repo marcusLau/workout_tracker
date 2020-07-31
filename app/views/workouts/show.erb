@@ -1,6 +1,13 @@
-<h1>Show Workouts</h1>
+<h1>View Workout Details</h1>
 
-<% @workouts.each do |w| %>
-    <li><a href="/workouts/<%= w.id %>"><%= w.title %></a></li>
-<% end%>
+<p>Workout Title: <%= @workout.title %></p>
+<p><a href='/workouts/<%= @workout.id %>/edit'>Edit this Workout</a></p>
+
+<form method="POST" action="/workouts/<%= @workout.id %>/delete">
+    <input id="hidden" type="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete Workout">
+</form>
+<br>
+<a href='/workouts'>Show all Workouts</a>
+
 

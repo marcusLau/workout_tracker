@@ -1,0 +1,10 @@
+<h1>New Workout Form</h1>
+
+<form action='/workouts/new' method='POST'>
+    <input type='text' name='title' placeholder='Enter Workout Title: '><br>
+    <input type='date' name='date' min='2020-01-01' max='2024-01-01' value='2020-01-01'><br>
+    <input type='text' name='exercises[]' placeholder='Enter first exercise: '><br>
+    <input type='text' name='exercises[]' placeholder='Enter 2nd exercise: '><br>
+    <input type='text' name='exercises[]' placeholder='Enter 3rd exercise: '><br>
+    <input type='submit'>
+</form>

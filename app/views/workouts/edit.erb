@@ -1,0 +1,14 @@
+<h1>Edit Your Workout</h1>
+
+<form method="POST" action="/workouts/<%= @workout.id %>/edit">
+    <input id="hidden" type="hidden" name="_method" value="patch">
+    <p>Workout Title: </p>
+    <textarea type="text" name="title">Edit Workout Title: <%= @workout.title %></textarea><br>
+    <p>Workout Date: </p>
+    <input type='date' name='date' min='2020-01-01' max='2024-01-01' value='2020-01-01'><br>
+    <p>Edit exercises: </p>
+    <textarea type='text' name='exercises[]'><%= @workout.exercises[0] %></textarea><br>
+    <textarea type='text' name='exercises[]'><%= @workout.exercises[1] %></textarea><br>
+    <textarea type='text' name='exercises[]'><%= @workout.exercises[2] %></textarea><br>
+    <input type="submit" value="submit">
+</form>

@@ -1,0 +1,17 @@
+<h1>Workout Index</h1>
+
+<a href='/workouts/new'>Create New Workout</a>
+
+<% @workouts.each do |workout| %>
+    <br>
+    <p>Workout Title: <%= workout.title %></p>
+    <p>Date: <%= workout.date %></p>
+    <ul>
+    <li><%= workout.exercises[0] %></li>
+    <li><%= workout.exercises[1] %></li>
+    <li><%= workout.exercises[2] %></li>
+    </ul>
+    <p>Belongs to: <%= workout.user.name %></p>
+    <a href='/workouts/<%= workout.id %>'>Show Workout Details</a>
+    <br>
+  <% end %>
