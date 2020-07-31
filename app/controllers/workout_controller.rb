@@ -1,9 +1,10 @@
 class WorkoutController < ApplicationController
 
     get '/workouts' do 
-        @workouts = Workout.all
+        @workouts = current_user.workouts.all
+
+        # @workouts = Workout.all
         if logged_in?
-            @user = current_user
             erb :'workouts/index'
         else
             redirect to '/login'
@@ -27,7 +28,7 @@ class WorkoutController < ApplicationController
             user_id: @user.id
         )
         if @workout.save
-            @workouts = Workout.all
+            @workouts = @user.workouts.all
             erb :'workouts/index'
         else
             redirect to '/workouts/new'
