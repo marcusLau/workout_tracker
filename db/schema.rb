@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2020_07_28_234545) do
     t.string "title"
     t.datetime "date"
     t.text "exercises"
+    t.text "weights"
     t.integer "user_id"
   end
 

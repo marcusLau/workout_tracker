@@ -4,6 +4,7 @@ class Workouts < ActiveRecord::Migration[6.0]
       s.string :title
       s.datetime :date
       s.text :exercises
+      s.text :weights
       s.integer :user_id
     end
   end

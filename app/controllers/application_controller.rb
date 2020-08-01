@@ -19,7 +19,12 @@ class ApplicationController < Sinatra::Base
     end
 
     def current_user
-      @current_user ||= User.find(session[:id]) if session[:id]
+      puts session[:id]
+      if User.all.empty?
+        # Do not check for session ID within user if there exists no Users yet.
+      else 
+        @current_user ||= User.find(session[:id]) if session[:id]
+      end
     end
   end
 

@@ -2,13 +2,19 @@
 
 <form method="POST" action="/workouts/<%= @workout.id %>/edit">
     <input id="hidden" type="hidden" name="_method" value="patch">
-    <p>Workout Title: </p>
+    <p style='font-weight: bold;'>Workout Title: </p>
     <textarea type="text" name="title"><%= @workout.title %></textarea><br><br>
-    <label>Workout Date: </label>
+    <label style='font-weight: bold;'>Workout Date: </label>
     <input type='date' name='date' min='2020-01-01' max='2024-01-01' value='2020-01-01'><br>
-    <p>Edit exercises: </p>
-    <textarea type='text' name='exercises[]'><%= @workout.exercises[0] %></textarea><br>
-    <textarea type='text' name='exercises[]'><%= @workout.exercises[1] %></textarea><br>
-    <textarea type='text' name='exercises[]'><%= @workout.exercises[2] %></textarea><br>
+    <p style='font-weight: bold;'>Edit exercises: </p>
+
+    <p>Exercise 1: <input type='text' name='exercises[]' value='<%= @workout.exercises[0]%>' </p>
+    Weight: <input type='text' name='weights[]' value='<%= @workout.weights[0]%>'>
+    <p>Exercise 2: <input type='text' name='exercises[]' value='<%= @workout.exercises[1]%>' </p>
+    Weight: <input type='text' name='weights[]' value='<%= @workout.weights[1]%>'>
+    <p>Exercise 2: <input type='text' name='exercises[]' value='<%= @workout.exercises[2]%>' </p>
+    Weight: <input type='text' name='weights[]' value='<%= @workout.weights[2]%>'>
+    
+    <br><br>
     <input type="submit" value="submit">
 </form>

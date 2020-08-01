@@ -10,9 +10,9 @@
     <br>
     <label style="font-weight: bold;">Exercises: </label>
     <ul>
-    <li><%= workout.exercises[0] %></li>
-    <li><%= workout.exercises[1] %></li>
-    <li><%= workout.exercises[2] %></li>
+    <li><%= workout.exercises[0] %>: <%= workout.weights[0]%> lbs</li>
+    <li><%= workout.exercises[1] %>: <%= workout.weights[1]%> lbs</li>
+    <li><%= workout.exercises[2] %>: <%= workout.weights[2]%> lbs</li>
     </ul>
     <a href='/workouts/<%= workout.id %>'>Show Workout Details</a>
     <br>

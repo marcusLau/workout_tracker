@@ -2,7 +2,6 @@ class WorkoutController < ApplicationController
 
     get '/workouts' do 
         @workouts = current_user.workouts.all
-        # @workouts = Workout.all
         if logged_in?
             erb :'workouts/index'
         else
@@ -20,9 +19,9 @@ class WorkoutController < ApplicationController
 
     post '/workouts/new' do 
         @user = current_user 
-        @workout = Workout.new(params)  
+        @workout = Workout.new(params)
+
         if Workout.valid?(params) && @workout.save
-            puts "workout saved"
             @workouts = @user.workouts.all
             erb :'workouts/index'
         else
@@ -31,8 +30,8 @@ class WorkoutController < ApplicationController
     end
 
     get '/workouts/:id' do 
-        if logged_in?
-            @workout = Workout.find_by(id: params[:id])
+        @workout = Workout.find_by(id: params[:id])
+        if logged_in? && @workout.user == current_user
             erb :'workouts/show'
         else
             redirect to '/login'
@@ -53,7 +52,7 @@ class WorkoutController < ApplicationController
         @workout = Workout.find_by(id: params[:id])
         @user = current_user 
         if Workout.valid?(params) 
-            if @workout.update(title: params[:title], date: params[:date], exercises: params[:exercises])
+            if @workout.update(title: params[:title], date: params[:date], exercises: params[:exercises], weights: params[:weights])
                 erb :'workouts/show'
             end
         else
