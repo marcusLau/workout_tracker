@@ -1,6 +1,6 @@
-<h1>View Workout Details</h1>
+<h2>View Workout Details</h2>
 
-<p>Workout Title: <%= @workout.title %></p>
+<label style='font-weight: bold;'>Workout Title: </label><%= @workout.title %>
 <p><a href='/workouts/<%= @workout.id %>/edit'>Edit this Workout</a></p>
 
 <form method="POST" action="/workouts/<%= @workout.id %>/delete">

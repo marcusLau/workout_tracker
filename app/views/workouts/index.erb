@@ -3,9 +3,12 @@
 <a href='/workouts/new'>Create New Workout</a>
 
 <% @workouts.each do |workout| %>
+    <br><br>
+    <label style="font-weight: bold;">Workout Title: </label> <%= workout.title %>
     <br>
-    <p>Workout Title: <%= workout.title %></p>
-    <p>Date: <%= workout.date %></p>
+    <label style="font-weight: bold;">Date: </label><%= workout.date %>
+    <br>
+    <label style="font-weight: bold;">Exercises: </label>
     <ul>
     <li><%= workout.exercises[0] %></li>
     <li><%= workout.exercises[1] %></li>

@@ -19,14 +19,10 @@ class WorkoutController < ApplicationController
     end
 
     post '/workouts/new' do 
-        @user = current_user
-        @workout = Workout.create(
-            title: params[:title],
-            date: params[:date],
-            exercises: params[:exercises],
-            user_id: @user.id
-        )
+        @user = current_user 
+        @workout = Workout.new(params)  
         if Workout.valid?(params) && @workout.save
+            puts "workout saved"
             @workouts = @user.workouts.all
             erb :'workouts/index'
         else

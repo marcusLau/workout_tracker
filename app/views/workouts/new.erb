@@ -1,12 +1,13 @@
-<h1>New Workout Form</h1>
+<h2>Create New Workout</h2>
 
 <form action='/workouts/new' method='POST'>
-    <input type='text' name='title' placeholder='Enter Workout Title: '><br>
-    <input type='date' name='date' min='2020-01-01' max='2024-01-01' value='2020-01-01'><br>
-    <input type='text' name='exercises[]' placeholder='Enter first exercise: '><br>
-    <input type='text' name='exercises[]' placeholder='Enter 2nd exercise: '><br>
-    <input type='text' name='exercises[]' placeholder='Enter 3rd exercise: '><br>
+    <p>Workout Title: <input type='text' name='title'></p>
+    <p>Workout Date: <input type='date' name='date' min='2020-01-01' max='2024-01-01'></p>
+    <p>Exercise 1: <input type='text' name='exercises[]'></p>
+    <p>Exercise 2: <input type='text' name='exercises[]'></p>
+    <p>Exercise 3: <input type='text' name='exercises[]'></p>
     <input type='submit'>
 </form>
-<br>
+<br><br>
+
 <a href='/workouts'>Back to Workout Index</a>
