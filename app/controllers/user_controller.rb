@@ -10,12 +10,10 @@ class UserController < ApplicationController
 
     post '/signup' do 
         # check if params are valid first
-        if User.valid?(params)
-            @user = User.new(params) 
-            if @user.save
-                session[:id] = @user.id
-                redirect to '/workouts' 
-            end
+        @user = User.new(params) 
+        if User.valid?(params) && @user.save
+            session[:id] = @user.id
+            redirect to '/workouts' 
         else 
             redirect to '/signup'
         end

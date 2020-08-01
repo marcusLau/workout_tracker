@@ -20,17 +20,15 @@ class WorkoutController < ApplicationController
 
     post '/workouts/new' do 
         @user = current_user
-        if Workout.valid?(params)
-            @workout = Workout.create(
-                title: params[:title],
-                date: params[:date],
-                exercises: params[:exercises],
-                user_id: @user.id
-            )
-            if @workout.save
-                @workouts = @user.workouts.all
-                erb :'workouts/index'
-            end
+        @workout = Workout.create(
+            title: params[:title],
+            date: params[:date],
+            exercises: params[:exercises],
+            user_id: @user.id
+        )
+        if Workout.valid?(params) && @workout.save
+            @workouts = @user.workouts.all
+            erb :'workouts/index'
         else
             redirect to '/workouts/new'
         end
@@ -57,9 +55,11 @@ class WorkoutController < ApplicationController
     # updates workout with new params
     patch '/workouts/:id/edit' do 
         @workout = Workout.find_by(id: params[:id])
-        @user = current_user
-        if Workout.valid?(params) && @workout.update(title: params[:title], date: params[:date], exercises: params[:exercises])
-            erb :'workouts/show'
+        @user = current_user 
+        if Workout.valid?(params) 
+            if @workout.update(title: params[:title], date: params[:date], exercises: params[:exercises])
+                erb :'workouts/show'
+            end
         else
             redirect to '/workouts' # if params are invalid OR @workout.update fails, redirect back to /workouts
         end
