@@ -6,7 +6,7 @@ A CRUD, MVC workout tracker built using Sinatra. Users may sign-up, login, creat
 
 ## Instructions
 
-To use this app, clone this repository, run 'bundle install', and then run 'shotgun' to start the application.
+To use this app, clone this repository, run 'bundle install', run 'rake db:migrate', and then run 'shotgun' to start the application.
 
 ## Contributors 
 
