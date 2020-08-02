@@ -11,7 +11,8 @@ class UserController < ApplicationController
     post '/signup' do 
         # check if params are valid first
         @user = User.new(params) 
-        if User.valid?(params) && @user.save
+        if User.valid?(params) 
+            @user.save
             session[:id] = @user.id
             redirect to '/workouts' 
         else 
@@ -28,7 +29,7 @@ class UserController < ApplicationController
     end
 
     post '/login' do 
-        @user =  User.find_by(name: params[:name])
+        @user = User.find_by(name: params[:name])
         if @user && @user.authenticate(params[:password])
             session[:id] = @user.id
             redirect to '/workouts'

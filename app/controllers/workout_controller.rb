@@ -18,10 +18,16 @@ class WorkoutController < ApplicationController
     end
 
     post '/workouts/new' do 
-        @user = current_user 
-        @workout = Workout.new(params)
-
-        if Workout.valid?(params) && @workout.save
+        @user = current_user
+        if Workout.valid?(params)
+            @workout = Workout.create( # This create method inserts into db
+                title: params[:title],
+                date: params[:date],
+                exercises: params[:exercises],
+                weights: params[:weights],
+                user_id: @user.id
+            )
+            @workout.save
             @workouts = @user.workouts.all
             erb :'workouts/index'
         else
@@ -63,7 +69,8 @@ class WorkoutController < ApplicationController
     # Can only delete if it belongs to that user
     delete '/workouts/:id/delete' do 
         @workout = current_user.workouts.find_by(id: params[:id])
-        if @workout && @workout.destroy
+        if @workout 
+            @workout.destroy
             redirect to '/workouts'
         else
             redirect to '/workouts/#{@workout.id}'
