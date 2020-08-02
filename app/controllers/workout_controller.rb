@@ -1,5 +1,6 @@
 class WorkoutController < ApplicationController
 
+    # Get all @workouts for specific current_user
     get '/workouts' do 
         @workouts = current_user.workouts.all
         if logged_in?
@@ -8,7 +9,7 @@ class WorkoutController < ApplicationController
             redirect to '/login'
         end
     end
-
+    
     get '/workouts/new' do 
         if logged_in?
             erb :'workouts/new'
